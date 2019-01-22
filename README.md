@@ -26,6 +26,11 @@ For data analysis, we had to reformat the POSIX date time columns to datetime ob
   - Grouped this dataset by Year, counted the IDs to get tally of incidents per year.
   - Calculated the mean, median standard deviation of response times. 
 
+Raleigh FD data does not include EMS (due to HIPPA), which comprise 70% of the incidents total. What we examined was the remaining 30%.
+
+The most common types of non-EMS incidents are false alarms, service calls and good intent calls, accounting for nearly 80% of the remaining incidents. Fires and hazardous conditions are the top incidents, accounting for about 10% of the non-EMS calls.
+
+![See this graph:](https://github.com/xjarodx/Project_1_Group_7/blob/master/graphics/total_incidents_pie3.png)
 Raleigh FD had a mean incident rate of 14402.09 per year, median 13893.0, with a standard deviation of 1424.08 and error 429.38
 The most incidents came in 2017 when there were 18051, the minimum in 2009 when there were 13026.
 Fire incidents have generally been on the rise in Raleigh over the period of study
@@ -78,6 +83,6 @@ However, looking at just the fire codes (100's) and severe weather/disaster code
 ![See this graph:](graphics/fires_by_year_month.png)
 ![See this graph:](graphics/storms_by_year_month.png)
 
-Fire incidents were mapped by zip code and charted by animated gif over the years studied. 
+Fire incidents were mapped by zip code and charted by animated gif over the years studied. It appeared that the downtown zip code 27601 consistently had the highest number of incidents.
 
 ![See this gif:](https://github.com/xjarodx/Project_1_Group_7/blob/master/Mapping/Maps/maps%20used%20to%20make%20gif%20with%20title/Fires.gif)
