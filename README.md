@@ -1,28 +1,47 @@
-# Project_1_Group_7
-First Project Group 7 Homework
+Raleigh Fire Incident Analysis
+Data Analytics Bootcamp Project 1 - Team 7
 
-Summary: Our project is to uncover patterns in fire data in Wake County, North Carolina. We’ll examine relationships between types of calls, weather over time, and related questions as time permits. 
-Data: Wake County fire department incident data 
-Questions:
-•	What are the top types of calls?
-o	Where do they happen the most (all)?
-o	Where do they happen the most (by type)?
-•	How does the growth impact the number of calls that firefighters respond to?
-•	What’s the impact of weather on fires?
-•	How many incidents are cancelled in route?
-Data Sources: 
-•	Fire Incidents from Raleigh Open Data
-•	World Weather Online 
-•	Further research is needed for population data and national statistics 
-Fire Incident Fields: Latitude, Longitude, Incident Code (match to the National Fire Incident Reporting System Code), Date, Dispatch time, Cleared Date Time, Station, Platoon, Address, Text Description of Incident, 
-Weather Fields: Date, Latitude, Longitude, Humidity, Max Temperature, Total Sun Hour, Wind Speed, Weather Code (Condition Type), Weather Description (maybe have the rainy, sunny, cloudy), Precipitation 
-Tasks Due on Saturday:
-•	Put fire data in DataFrame and share – Laura
-•	Explore fire data – All 
-•	Pull weather data – Jarrod
-•	Find Wake County Demographic Data – Virgil 
-•	Get National Fire Incident Reporting Codes in a list – Jill
-•	See if there are national stats - Jennifer
-•	Start Presentation – Jennifer 
-•	Look into animated maps – Jarrod
-•	Is there other county data for other NC regions - Laura
+January 16, 2019
+
+
+Introduction
+Raleigh launched its open data project in 2012 when the City Council adopted the Open Source Resolution. Since then it has made available numerous datasets using the ArcGIS platform reflecting the functioning of a growing metropolitan center. We chose to focus on the fire incident data, which uses a nationally adopted system for coding emergency service calls into categories. It tracks dispatch and arrival times at incidents, type of incident, and location. The data allows us to view metrics in overall number of incidents over time, response speed by stations, and compare the number of incidents with population growth, weather, and more.
+
+From the Raleigh Open Data website, we know there are 177,738 rows available. The API limits calls to 2000 records per request. We created a numpy array to make a list of start record number in increments of 2000, up to 176,000. We used that list to set the parameter for the starting record number in a loop, running 89 API calls to get all the incident and coordinate data.
+
+Our try-except loop caught one call that repeatedly failed, but we were able to pull that set down from the web interface manually. We then parsed the two JSON files separately (one was a list, one was a single JSON set), created Pandas dataframes from the parsed data and appended the manually fetched set to the larger one.
+
+There were 175738 records in the main set, but 1425 lacked coordinates, 1626 records lacked incident_type, 1436 were missing dispatch date/time and two did not have cleared date. The ‘missing’ set had 2000 records, 24 missing coordinates, 49 missing type.
+
+Once the two sets were merged, they were further cleaned by removing records from 2007, which had partial data, and 2019. After removing these records, we used a total of 159803 for further analysis.
+
+For data analysis, we had to reformat the POSIX date time columns to datetime objects using the Pandas to_datetime function. This was tricky because we also had to take into consideration the times were UTC and needed to convert to EST time zone. We used dispatch datetime to create Year and YYYY-MM-DD dates for merging with population data and weather data, respectively.
+
+Fire incident analysis:
+<Add per-type analyses>
+Added a column (timedelta) ‘Seconds’ that was arrive time minus dispatch time to track overall and individual station performance.
+Removed rows with null stations.
+Grouped this dataset by Year, counted the IDs to get tally of incidents per year.
+Calculated the mean, median standard deviation of response times. 
+Raleigh FD had a mean incident rate of 14402.09 per year, median 13893.0, with a standard deviation of 1424.08 and error 429.38
+The most incidents came in 2017 when there were 18051, the minimum in 2009 when there were 13026.
+<graphics/total_fi_year.png>
+Fire incidents have been on the rise in Raleigh over the period of study
+
+Station response time analysis:
+A list of stations was obtained from the Wake County website.
+There was one record with station number 13, which does not exist.
+There were 30034 rows without arrival times.
+These nulls fell into the following categories:
+Dispatched & cancelled en route
+False alarm or false call Other
+Cover assignment standby moveup
+Alarm system sounded due to malfunction
+Service Call other
+Dispatched & cancelled en route
+Of the remaining, there were 59 incidents with response times more than 3 standard deviations from the mean. 
+Before removing them, the RFD stations had a 307 second response time, with standard deviation 1046, error 3.0.
+After removing outliers, the RFD stations had a 292.35 second response time, with standard deviation 145.54.
+The station with the fastest response times averaged 232.76 seconds while the slowest averaged 348.36.
+There were 18 stations with response times above average: [2, 4, 6, 8, 11, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+<‘./graphics/station_response_time_summary.png'>
