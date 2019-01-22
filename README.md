@@ -28,7 +28,7 @@ For data analysis, we had to reformat the POSIX date time columns to datetime ob
 
 Raleigh FD had a mean incident rate of 14402.09 per year, median 13893.0, with a standard deviation of 1424.08 and error 429.38
 The most incidents came in 2017 when there were 18051, the minimum in 2009 when there were 13026.
-Fire incidents have been on the rise in Raleigh over the period of study
+Fire incidents have generally been on the rise in Raleigh over the period of study
 ![See this graph:](graphics/total_incidents_by_year.png)
 
 When we look just at 2017, there seemed to be an uptick in incidents in January and April
