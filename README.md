@@ -46,7 +46,8 @@ Incidents tend to peak during waking hours, especially late afternoon.
 ![See this graph:](graphics/total_incidents_by_hour.png)
 
 
-Station response time analysis:
+## Station response time analysis:
+
 A list of stations was obtained from the Wake County website.
 There was one record with station number 13, which does not exist.
 There were 30034 rows without arrival times, so for the purposes of this analysis those were removed as arrival time was used to calculate the response from dispatch time.
