@@ -69,3 +69,11 @@ In looking further into the slow vs. fast stations, #1 in downtown Raleigh compr
 
 ![See this graph:](graphics/fast_station.png)
 ![See this graph:](graphics/slow_station.png)
+
+## Fires and Storms
+
+We attempted to link weather data to the incident dataset by calling the World Weather Online API, but this particular API was very hard to work with and appeared to be missing data for many days in the period of study. We merged several years worth of weather data and plotted the temperature, humidity, wind and precipitation against number of incidents and saw no correlation.
+
+However, looking at just the fire codes (100's) and severe weather/disaster codes (800s) we were able to see increased numbers of fire incidents in April 2017 (possibly relating to the huge Metropolitan fire in downtown Raleigh, and storm-related increases relating to the periods around Hurricanes Irene, Matthew, and Florence, and snowstorms and tornado outbreaks.
+![See this graph:](graphics/fires_by_year_month.png)
+![See this graph:](graphics/storms_by_year_month.png)
