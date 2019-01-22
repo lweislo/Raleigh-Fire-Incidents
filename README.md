@@ -13,35 +13,55 @@ Our try-except loop caught one call that repeatedly failed, but we were able to 
 
 There were 175738 records in the main set, but 1425 lacked coordinates, 1626 records lacked incident_type, 1436 were missing dispatch date/time and two did not have cleared date. The ‘missing’ set had 2000 records, 24 missing coordinates, 49 missing type.
 
-Once the two sets were merged, they were further cleaned by removing records from 2007, which had partial data, and 2019. After removing these records, we used a total of 159803 for further analysis.
+Once the two sets were merged, they were further cleaned by removing records from 2007, which had partial data, and 2019. After removing these records, we used a total of 158423 for further analysis.
 
 For data analysis, we had to reformat the POSIX date time columns to datetime objects using the Pandas to_datetime function. This was tricky because we also had to take into consideration the times were UTC and needed to convert to EST time zone. We used dispatch datetime to create Year and YYYY-MM-DD dates for merging with population data and weather data, respectively.
 
 Fire incident analysis:
-<Add per-type analyses>
+
 Added a column (timedelta) ‘Seconds’ that was arrive time minus dispatch time to track overall and individual station performance.
 Removed rows with null stations.
 Grouped this dataset by Year, counted the IDs to get tally of incidents per year.
 Calculated the mean, median standard deviation of response times. 
 Raleigh FD had a mean incident rate of 14402.09 per year, median 13893.0, with a standard deviation of 1424.08 and error 429.38
 The most incidents came in 2017 when there were 18051, the minimum in 2009 when there were 13026.
-<graphics/total_fi_year.png>
 Fire incidents have been on the rise in Raleigh over the period of study
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/total_incidents_by_year.png]]
+
+When we look just at 2017, there seemed to be an uptick in incidents in January and April
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/2017_month_type_stacked.png]]
+
+When grouped by month of the year, there is no discernable trend.
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/total_incident_by_month.png]]
+
+Incidents tend to peak during waking hours, especially late afternoon.
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/total_incidents_by_hour.png]]
+
 
 Station response time analysis:
 A list of stations was obtained from the Wake County website.
 There was one record with station number 13, which does not exist.
-There were 30034 rows without arrival times.
+There were 30034 rows without arrival times, so for the purposes of this analysis those were removed as arrival time was used to calculate the response from dispatch time.
+
 These nulls fell into the following categories:
-Dispatched & cancelled en route
-False alarm or false call Other
-Cover assignment standby moveup
-Alarm system sounded due to malfunction
-Service Call other
-Dispatched & cancelled en route
-Of the remaining, there were 59 incidents with response times more than 3 standard deviations from the mean. 
-Before removing them, the RFD stations had a 307 second response time, with standard deviation 1046, error 3.0.
-After removing outliers, the RFD stations had a 292.35 second response time, with standard deviation 145.54.
-The station with the fastest response times averaged 232.76 seconds while the slowest averaged 348.36.
-There were 18 stations with response times above average: [2, 4, 6, 8, 11, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
-<‘./graphics/station_response_time_summary.png'>
+  -Dispatched & cancelled en route
+  -False alarm or false call Other
+  -Cover assignment standby moveup
+  -Alarm system sounded due to malfunction
+  -Service Call other
+
+Of the remaining 128714 records, there were 58 incidents with response times more than 3 standard deviations from the mean. 
+Before removing them, the RFD stations had a 306 second response time, with standard deviation 1049.
+After removing outliers, the RFD stations had a 292.07 second response time, with standard deviation 143.35.
+
+The station with the fastest response times averaged 232.54 seconds while the slowest averaged 341.4.
+There were 18 stations with response times above average: 2, 4, 6, 8, 11, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29.
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/station_response_time_summary.png]]
+
+After interviewing Raleigh FD Planning Manager Andrew Langan, I discovered that some of the slow stations were specialized to Hazmat incidents which require more preparation. The higher numbered stations are in locations of urban sprawl and congestion, and this impacts their ability to respond quickly. The department should be hitting target response times 90% of the time, but they are currently only hitting target 80% of the time. This is reflected in the skew of the mean response times.
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/station_response_time_curve.png]]
+
+In looking further into the slow vs. fast stations, #1 in downtown Raleigh comprises two units, one of which will be split out to a new station 30 (13) in the near future. It is consistently the quickest. Slower stations tend to be more spread out in their calls.
+
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/fast_station.png]]
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/slow_station.png]]
