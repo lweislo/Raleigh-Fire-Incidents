@@ -77,3 +77,7 @@ We attempted to link weather data to the incident dataset by calling the World W
 However, looking at just the fire codes (100's) and severe weather/disaster codes (800s) we were able to see increased numbers of fire incidents in April 2017 (possibly relating to the huge Metropolitan fire in downtown Raleigh, and storm-related increases relating to the periods around Hurricanes Irene, Matthew, and Florence, and snowstorms and tornado outbreaks.
 ![See this graph:](graphics/fires_by_year_month.png)
 ![See this graph:](graphics/storms_by_year_month.png)
+
+Fire incidents were mapped by zip code and charted by animated gif over the years studied. 
+
+![See this gif:](https://github.com/lweislo/Raleigh-Fire-Incident-Analysis/tree/master/Mapping/Maps/maps%20used%20to%20make%20gif%20with%20title/fires.gif)
