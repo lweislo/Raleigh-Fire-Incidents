@@ -62,7 +62,7 @@ There were 18 stations with response times above average: 2, 4, 6, 8, 11, 15, 16
 ![See this graph:](graphics/station_response_time_summary.png)
 ![See this graph:](graphics/station_response_time_boxen.png)
 
-After interviewing Raleigh FD Planning Manager Andrew Langan, I discovered that some of the slow stations were specialized to Hazmat incidents which require more preparation. The higher numbered stations are in locations of urban sprawl and congestion, and this impacts their ability to respond quickly. The department should be hitting target response times 90% of the time, but they are currently only hitting target 80% of the time. This is reflected in the skew of the mean response times.
+After interviewing Raleigh FD Planning Officer Andrew Langan, I discovered that some of the slow stations were specialized to Hazmat incidents which require more preparation. The higher numbered stations are in locations of urban sprawl and congestion, and this impacts their ability to respond quickly. The department should be hitting target response times 90% of the time, but they are currently only hitting target 80% of the time. This is reflected in the skew of the mean response times.
 ![See this graph:](graphics/station_response_time_curve.png)
 
 In looking further into the slow vs. fast stations, #1 in downtown Raleigh comprises two units, one of which will be split out to a new station 30 (13) in the near future. It is consistently the quickest. Slower stations tend to be more spread out in their calls.
