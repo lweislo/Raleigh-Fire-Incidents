@@ -80,4 +80,4 @@ However, looking at just the fire codes (100's) and severe weather/disaster code
 
 Fire incidents were mapped by zip code and charted by animated gif over the years studied. 
 
-![See this gif:](https://github.com/lweislo/Raleigh-Fire-Incident-Analysis/tree/master/Mapping/Maps/maps%20used%20to%20make%20gif%20with%20title/fires.gif)
+![See this gif:](https://github.com/xjarodx/Project_1_Group_7/blob/master/Mapping/Maps/maps%20used%20to%20make%20gif%20with%20title/Fires.gif)
