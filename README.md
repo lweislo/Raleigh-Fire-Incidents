@@ -57,6 +57,7 @@ After removing outliers, the RFD stations had a 292.07 second response time, wit
 The station with the fastest response times averaged 232.54 seconds while the slowest averaged 341.4.
 There were 18 stations with response times above average: 2, 4, 6, 8, 11, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29.
 [[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/station_response_time_summary.png]]
+[[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/station_response_time_boxen.png]]
 
 After interviewing Raleigh FD Planning Manager Andrew Langan, I discovered that some of the slow stations were specialized to Hazmat incidents which require more preparation. The higher numbered stations are in locations of urban sprawl and congestion, and this impacts their ability to respond quickly. The department should be hitting target response times 90% of the time, but they are currently only hitting target 80% of the time. This is reflected in the skew of the mean response times.
 [[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/station_response_time_curve.png]]
