@@ -1,10 +1,12 @@
 Raleigh Fire Incident Analysis
 Data Analytics Bootcamp Project 1 - Team 7
 
+Mapping by Jarod Hoffman, Population Analysis by Virgil Inferido, Incident Type pie chart by Jill Cowan, Weather by Jarod Hoffman and Laura Weislo, Incident API code, General and Fire Station Analysis by Laura Weislo
+
 January 16, 2019
 
 
-Introduction
+## Introduction
 Raleigh launched its open data project in 2012 when the City Council adopted the Open Source Resolution. Since then it has made available numerous datasets using the ArcGIS platform reflecting the functioning of a growing metropolitan center. We chose to focus on the fire incident data, which uses a nationally adopted system for coding emergency service calls into categories. It tracks dispatch and arrival times at incidents, type of incident, and location. The data allows us to view metrics in overall number of incidents over time, response speed by stations, and compare the number of incidents with population growth, weather, and more.
 
 From the Raleigh Open Data website, we know there are 177,738 rows available. The API limits calls to 2000 records per request. We created a numpy array to make a list of start record number in increments of 2000, up to 176,000. We used that list to set the parameter for the starting record number in a loop, running 89 API calls to get all the incident and coordinate data.
@@ -17,16 +19,17 @@ Once the two sets were merged, they were further cleaned by removing records fro
 
 For data analysis, we had to reformat the POSIX date time columns to datetime objects using the Pandas to_datetime function. This was tricky because we also had to take into consideration the times were UTC and needed to convert to EST time zone. We used dispatch datetime to create Year and YYYY-MM-DD dates for merging with population data and weather data, respectively.
 
-Fire incident analysis:
+## Fire incident analysis:
 
-Added a column (timedelta) ‘Seconds’ that was arrive time minus dispatch time to track overall and individual station performance.
-Removed rows with null stations.
-Grouped this dataset by Year, counted the IDs to get tally of incidents per year.
-Calculated the mean, median standard deviation of response times. 
+  -Added a column (timedelta) ‘Seconds’ that was arrive time minus dispatch time to track overall and individual station performance. 
+  -Removed rows with null stations.
+  -Grouped this dataset by Year, counted the IDs to get tally of incidents per year.
+  -Calculated the mean, median standard deviation of response times. 
+
 Raleigh FD had a mean incident rate of 14402.09 per year, median 13893.0, with a standard deviation of 1424.08 and error 429.38
 The most incidents came in 2017 when there were 18051, the minimum in 2009 when there were 13026.
 Fire incidents have been on the rise in Raleigh over the period of study
-[See this graph:] [/graphics/total_incidents_by_year.png]
+![See this graph:] [graphics/total_incidents_by_year.png]
 
 When we look just at 2017, there seemed to be an uptick in incidents in January and April
 [[https://github.com/lweislo/Raleigh-Fire-Incidents/blob/master/graphics/2017_month_type_stacked.png]]
